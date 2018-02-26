@@ -32,7 +32,6 @@ export class DefaultWatchResultFetcher implements IWatchResultFetcher {
         logger.debug('requesting to ' + path);
 
         const response: {result: IFetcherApiResult} = await rp.get(path, options);
-
         logger.debug('response is', response);
 
         return response.result;

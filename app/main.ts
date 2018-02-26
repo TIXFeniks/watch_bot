@@ -114,6 +114,7 @@ export class MainApp {
     }
 
     protected async _processWatcherResult(res: IResult, chatId: string): Promise<void> {
+        logger.debug(res);
         logger.info('new Messages: ' + JSON.stringify(res));
 
         await this._bot.sendMessage(chatId, res.message);

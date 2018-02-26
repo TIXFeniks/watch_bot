@@ -50,7 +50,7 @@ export default class DefaultResultWatcher extends EventEmitter implements IResul
 
     /**
      * stops watching process
-     * @returns void
+     * @returns void,
      */
     public stopWatching(): void {
         this._cronJob.stop();
