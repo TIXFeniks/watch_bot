@@ -3,7 +3,7 @@ import {IBot, IBotChat} from './bot/interfaces';
 import DefaultBot from './bot/default';
 import Auth from './auth/default';
 import {IAuth} from './auth/interfaces';
-import DefaultResultWatcher from './watcher/default';
+import DefaultResultWatcher from './watcher/bloomberg';
 import logger from './logger/default';
 import * as config from 'config';
 import * as util from 'util';
@@ -114,7 +114,6 @@ export class MainApp {
     }
 
     protected async _processWatcherResult(res: IResult, chatId: string): Promise<void> {
-        logger.debug(res);
         logger.info('new Messages: ' + JSON.stringify(res));
 
         await this._bot.sendMessage(chatId, res.message);
