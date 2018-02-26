@@ -1,4 +1,4 @@
-import {BloombergFetcher} from '../watch_result_fetcher/bloomberg';
+import {HyperlinkFetcher} from '../watch_result_fetcher/hyperlink';
 import DefaultWatcher from './default';
 import * as config from 'config';
 
@@ -7,6 +7,6 @@ export default class BloombergWatcher extends DefaultWatcher {
         watchUrl: string,
         watchInterval: string = config.get('general.defaultCronTime')
     ) {
-        super(watchUrl, watchInterval, new BloombergFetcher());
+        super(watchUrl, watchInterval, new HyperlinkFetcher(new RegExp('^/news')), true, 'url');
     }
 }

@@ -30,11 +30,12 @@
     "url-join": "^2.0.2"
   },
   "devDependencies": {
-    "@types/request-promise": "^4.1.36",
+    "@types/cheerio": "^0.22.7",
     "@types/cron": "^1.2.1",
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.10",
     "@types/node-telegram-bot-api": "^0.27.0",
+    "@types/request-promise": "^4.1.36",
     "@types/request-promise-native": "^1.0.6",
     "@types/sinon": "^2.3.2",
     "@types/url-join": "^0.8.2",

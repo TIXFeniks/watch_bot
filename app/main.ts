@@ -110,7 +110,7 @@ export class MainApp {
             } catch (err) {
                 logger.error(err);
             }
-        }
+        };
     }
 
     protected async _processWatcherResult(res: IResult, chatId: string): Promise<void> {
@@ -118,24 +118,15 @@ export class MainApp {
 
         await this._bot.sendMessage(chatId, res.message);
 
-        let message = '';
-
-        res.entities.forEach((entity): void => {
-            message += '\n';
+        const messagePromises: Array<Promise<any>> = [];
+        res.entities.forEach((entity, index): void => {
+            let message: string = '';
             Object.keys(entity.meta).forEach((key) => {
-                message += `\n${key}: ${JSON.stringify(entity.meta[key])}`;
+                message += `https://translate.google.com/translate?hl=en&sl=en&tl=ru&u=${entity.meta[key]}`;
             });
+            messagePromises.push(this._bot.sendMessage(chatId, message));
         });
-
-        let newMessage = message.substr(0, 4000);
-
-        if (newMessage !== message) {
-            newMessage += '...';
-        }
-
-        if (!!message) {
-            await this._bot.sendMessage(chatId, newMessage);
-        }
+        await Promise.all(messagePromises);
     }
 
     protected async _initBotActions(): Promise<void> {

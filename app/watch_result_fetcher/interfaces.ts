@@ -1,8 +1,10 @@
+export interface IFetchedEntity {
+    meta: {[key: string]: any};
+}
+
 export interface IFetcherApiResult {
     message: string;
-    entities: Array<{
-        meta: {[key: string]: any};
-    }>;
+    entities: IFetchedEntity[];
 }
 
 export interface IWatchResultFetcher {
